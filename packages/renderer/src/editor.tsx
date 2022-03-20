@@ -24,7 +24,21 @@ const Editor: React.FC<Props> = (props) => {
     }
   }, [editorView])
 
-  return <div className='editor-wrapper' ref={refContainer}></div>
-}
+  //todo 修改editor内容
+  const changeVal = () => {
+    if (editorView) {
+      const newContent = editorView.state.doc + '\r\n' + '# 123';
+      editorView.dispatch(editorView.state.replaceSelection(newContent));
+    }
+  };
 
-export default Editor
+  // return <div className='editor-wrapper' ref={refContainer}></div>
+  return <div>
+    <button onClick={() => changeVal()}>点击添加</button>
+    <div className="editor-wrapper" ref={refContainer}></div>
+  </div>;
+
+
+};
+
+export default Editor;
